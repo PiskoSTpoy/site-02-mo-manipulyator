@@ -1,0 +1,1 @@
+var e=`МАНИП-МО`,t=`+7 (907) 031-17-37`,n=`tel:${t.replace(/[^\d+]/g,``)}`,r=`https://kran-network-leads.kran-network-leads.workers.dev/submit`;export{n as i,e as n,t as r,r as t};

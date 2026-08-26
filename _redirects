@@ -1,0 +1,17 @@
+# Постоянные редиректы старых адресов. Сгенерировано scripts/postbuild.mjs
+# из заглушек, которые Nuxt создаёт по routeRules в nuxt.config.ts.
+# Формат понимают Netlify и Cloudflare Pages; на прочих хостингах те же
+# адреса обслуживаются заглушками с noindex + canonical.
+
+/documents/dokumenty-na-operatora/          /blog/attestaciya-operatora-kmu/  301
+/geo/balashiha/                             /napravleniya/gorkovskoe/  301
+/geo/himki/                                 /napravleniya/leningradskoe/  301
+/geo/odintsovo/                             /napravleniya/  301
+/keysy/razgruzka-na-sklade-himki/           /keysy/razgruzka-na-logoparke/  301
+/park/inman-im-150/                         /park/  301
+/park/kanglim-ks1256/                       /park/  301
+/park/palfinger-pk23500/                    /park/  301
+/park/soosan-scs334/                        /park/  301
+/uslugi/dostavka-razgruzka-manipulyatorom/  /gruzy/  301
+/uslugi/manipulyator-tyazhelyy-10-20-tonn/  /gruzy/zhbi-i-plity/  301
+/uslugi/manipulyator-v-moskvu/              /napravleniya/  301
