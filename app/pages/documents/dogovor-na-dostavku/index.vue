@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const SITE = 'https://manip-mo.example'
+const SITE = 'https://manipmo.ru'
 const URL = `${SITE}/documents/dogovor-na-dostavku/`
 
 const title = 'Договор на доставку манипулятором: семь пунктов для проверки'

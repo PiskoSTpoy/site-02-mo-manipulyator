@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const SITE = 'https://manip-mo.example'
+const SITE = 'https://manipmo.ru'
 const URL = `${SITE}/gruzy/zhbi-i-plity/`
 
 const title = 'Манипулятор для ЖБИ: плиты, блоки ФБС, кольца колодцев'

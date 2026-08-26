@@ -20,14 +20,14 @@ const faqs = [
 ]
 
 useHead({
-  link: [{ rel: 'canonical', href: 'https://manip-mo.example/blog/ohrannaya-zona-lep-manipulyator/' }],
+  link: [{ rel: 'canonical', href: 'https://manipmo.ru/blog/ohrannaya-zona-lep-manipulyator/' }],
   script: [
     { type: 'application/ld+json', innerHTML: JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manip-mo.example/' },
-        { '@type': 'ListItem', position: 2, name: 'Блог', item: 'https://manip-mo.example/blog/' },
-        { '@type': 'ListItem', position: 3, name: 'Манипулятор под проводами', item: 'https://manip-mo.example/blog/ohrannaya-zona-lep-manipulyator/' },
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manipmo.ru/' },
+        { '@type': 'ListItem', position: 2, name: 'Блог', item: 'https://manipmo.ru/blog/' },
+        { '@type': 'ListItem', position: 3, name: 'Манипулятор под проводами', item: 'https://manipmo.ru/blog/ohrannaya-zona-lep-manipulyator/' },
       ],
     })},
     { type: 'application/ld+json', innerHTML: JSON.stringify({
@@ -39,9 +39,9 @@ useHead({
       // парсера это одна сущность с двумя разными названиями — @id заявляет
       // тождество, а name его опровергает. Видимая подпись под заголовком статьи
       // осталась прежней, менялась только разметка.
-      author: { '@type': 'Organization', name: 'МАНИП-МО', '@id': 'https://manip-mo.example/#organization' },
-      publisher: { '@id': 'https://manip-mo.example/#organization' },
-      mainEntityOfPage: 'https://manip-mo.example/blog/ohrannaya-zona-lep-manipulyator/',
+      author: { '@type': 'Organization', name: 'МАНИП-МО', '@id': 'https://manipmo.ru/#organization' },
+      publisher: { '@id': 'https://manipmo.ru/#organization' },
+      mainEntityOfPage: 'https://manipmo.ru/blog/ohrannaya-zona-lep-manipulyator/',
       inLanguage: 'ru-RU',
     })},
     { type: 'application/ld+json', innerHTML: JSON.stringify({

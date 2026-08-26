@@ -88,6 +88,24 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'ru' },
+      // Яндекс.Метрика, счётчик 111985225. Заведён 26.08.2026 — до этого сайт
+      // публиковался вслепую. Свой счётчик, не общий с другими сайтами сети —
+      // общий счётчик был бы связью внутри системы самого Яндекса.
+      script: [
+        {
+          type: 'text/javascript',
+          innerHTML: `(function(m,e,t,r,i,k,a){
+m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111985225', 'ym');
+ym(111985225, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});`,
+        },
+      ],
+      noscript: [
+        { innerHTML: '<div><img src="https://mc.yandex.ru/watch/111985225" style="position:absolute; left:-9999px;" width="1" height="1" alt="" /></div>' },
+      ],
       // og:image задан один на весь сайт. Отдельная картинка под каждую из 39
       // страниц была бы честнее, но рисовать её не из чего: собственных фото
       // объектов у сайта нет, а генерировать «обложки с заголовком» ради
@@ -102,7 +120,7 @@ export default defineNuxtConfig({
         // схлопывает мета-теги по property, дубля не возникает.
         { property: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { property: 'og:image', content: 'https://manip-mo.example/images/og/manip-mo-og.jpg' },
+        { property: 'og:image', content: 'https://manipmo.ru/images/og/manip-mo-og.jpg' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:image:alt', content: 'Манипулятор поднимает бревно на площадке в Подмосковье' },

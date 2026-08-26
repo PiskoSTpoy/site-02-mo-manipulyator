@@ -10,12 +10,12 @@ const description = 'Пять иллюстративных разборов за
 // собственные факторы подбора техники в МО, которых на других сайтах сети быть не может.
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 useHead({
-  link: [{ rel: 'canonical', href: 'https://manip-mo.example/keysy/' }],
+  link: [{ rel: 'canonical', href: 'https://manipmo.ru/keysy/' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manip-mo.example/' },
-      { '@type': 'ListItem', position: 2, name: 'Примеры задач', item: 'https://manip-mo.example/keysy/' },
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manipmo.ru/' },
+      { '@type': 'ListItem', position: 2, name: 'Примеры задач', item: 'https://manipmo.ru/keysy/' },
     ],
   })}],
 })

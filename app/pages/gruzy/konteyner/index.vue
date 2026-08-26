@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const SITE = 'https://manip-mo.example'
+const SITE = 'https://manipmo.ru'
 const URL = `${SITE}/gruzy/konteyner/`
 
 const title = 'Перевозка 20-футового контейнера — только порожнего'

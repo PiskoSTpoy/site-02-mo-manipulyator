@@ -10,12 +10,12 @@ const description = 'Что оформляется на рейс манипул�
 // здесь только ссылка.
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 useHead({
-  link: [{ rel: 'canonical', href: 'https://manip-mo.example/documents/' }],
+  link: [{ rel: 'canonical', href: 'https://manipmo.ru/documents/' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manip-mo.example/' },
-      { '@type': 'ListItem', position: 2, name: 'Документы', item: 'https://manip-mo.example/documents/' },
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manipmo.ru/' },
+      { '@type': 'ListItem', position: 2, name: 'Документы', item: 'https://manipmo.ru/documents/' },
     ],
   })}],
 })

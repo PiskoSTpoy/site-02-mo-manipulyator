@@ -24,7 +24,7 @@ import { join, relative } from 'node:path';
 
 const OUT = '.output/public';
 const PAGES = 'app/pages';
-const SITE = 'https://manip-mo.example';
+const SITE = 'https://manipmo.ru';
 
 const norm = (p) => p.split('\\').join('/');
 

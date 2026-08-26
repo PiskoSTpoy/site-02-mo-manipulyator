@@ -34,7 +34,7 @@ const faqs = [
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description, ogType: 'website', twitterCard: 'summary_large_image' })
 useHead({
-  link: [{ rel: 'canonical', href: 'https://manip-mo.example/' }],
+  link: [{ rel: 'canonical', href: 'https://manipmo.ru/' }],
   script: [
     {
       type: 'application/ld+json',
@@ -53,11 +53,11 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        '@id': 'https://manip-mo.example/#website',
+        '@id': 'https://manipmo.ru/#website',
         name: SITE_BRAND,
-        url: 'https://manip-mo.example',
+        url: 'https://manipmo.ru',
         inLanguage: 'ru-RU',
-        publisher: { '@id': 'https://manip-mo.example/#organization' },
+        publisher: { '@id': 'https://manipmo.ru/#organization' },
       }),
     },
   ],

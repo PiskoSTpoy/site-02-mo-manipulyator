@@ -2,7 +2,7 @@
 const title = 'Что возит манипулятор — шесть грузов и их ограничители'
 const description = 'Брус, ЖБИ, поддоны, бытовка, контейнер, малая спецтехника: что в каждом грузе отсекает технику — масса, длина борта, вылет или точки строповки.'
 
-const SITE = 'https://manip-mo.example'
+const SITE = 'https://manipmo.ru'
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 useHead({

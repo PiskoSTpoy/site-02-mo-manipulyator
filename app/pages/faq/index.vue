@@ -68,15 +68,15 @@ const groups = [...new Set(faqs.map((f) => f.group))]
 const breadcrumbLd = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manip-mo.example/' },
-    { '@type': 'ListItem', position: 2, name: 'Вопросы', item: 'https://manip-mo.example/faq/' },
+    { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://manipmo.ru/' },
+    { '@type': 'ListItem', position: 2, name: 'Вопросы', item: 'https://manipmo.ru/faq/' },
   ],
 }
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 useHead({
-  link: [{ rel: 'canonical', href: 'https://manip-mo.example/faq/' }],
+  link: [{ rel: 'canonical', href: 'https://manipmo.ru/faq/' }],
   script: [
     { type: 'application/ld+json', innerHTML: JSON.stringify(breadcrumbLd) },
     { type: 'application/ld+json', innerHTML: JSON.stringify(faqLd) },

@@ -4,7 +4,7 @@
 const BRAND = SITE_BRAND
 const PHONE = SITE_PHONE
 const TEL_HREF = SITE_TEL_HREF
-const SITE = 'https://manip-mo.example'
+const SITE = 'https://manipmo.ru'
 
 // Волна приёмки (26.08.2026). Было ТРИ узла разметки, из которых два описывали
 // одну и ту же компанию под разными идентификаторами: LocalBusiness с
@@ -40,7 +40,7 @@ useHead({
         '@id': `${SITE}/#organization`,
         name: BRAND,
         telephone: SITE_PHONE.replace(/[^\d+]/g, ''),
-        email: 'info@manip-mo.example',
+        email: 'info@manipmo.ru',
         url: SITE,
         priceRange: '₽₽',
         address: { '@type': 'PostalAddress', addressRegion: 'Московская область', addressCountry: 'RU' },

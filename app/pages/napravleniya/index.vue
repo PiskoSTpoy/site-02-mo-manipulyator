@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const SITE = 'https://manip-mo.example'
+const SITE = 'https://manipmo.ru'
 
 const title = 'Направления по шоссе — плечо от МКАД и цена рейса'
 const description = 'Новорижское, Ярославское, Симферопольское, Горьковское, Каширское, Ленинградское: километраж от МКАД, профиль грузов и цена рейса по открытому тарифу.'
