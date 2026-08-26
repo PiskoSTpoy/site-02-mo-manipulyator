@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Страница не найдена — МАНИП-МО</title>
+<meta name="description" content="Такой страницы на сайте нет: ссылка устарела или в адресе опечатка. Ниже — разделы, которые существуют: конфигуратор с ценой, грузы, шоссе и парк техники.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:site_name" content="МАНИП-МО">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Страница не найдена — МАНИП-МО">
+<meta property="og:description" content="Такой страницы на сайте нет. Ниже — разделы, которые существуют: конфигуратор с ценой, грузы, шоссе и парк техники.">
+<meta property="og:image" content="https://manip-mo.example/images/og/manip-mo-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!--
+  Волна приёмки (26.08.2026). Это НЕ сгенерированная страница, и так задумано.
+
+  `nuxt generate` кладёт в 404.html пустую SPA-оболочку: <div id="__nuxt"></div>
+  и скрипты. Список PRERENDER_NO_SSR_ROUTES в @nuxt/nitro-server захардкожен
+  («/index.html», «/200.html», «/404.html»), настройкой его не обойти — ни
+  routeRules { ssr: true }, ни nitro.prerender.routes не помогают, проверено
+  сборкой. Для пользователя это белый экран до гидратации, для краулера —
+  страница без title, description, разметки и телефона.
+
+  Поэтому 404-я здесь написана статически и подменяет оболочку после сборки
+  (scripts/postbuild.mjs). Страница самодостаточна: ни одного запроса к JS,
+  стили инлайном, шрифты — те же локальные woff2, что у всего сайта. Она
+  работает даже когда основной бандл не загрузился, а это ровно тот случай,
+  когда пользователь чаще всего на неё и попадает.
+
+  app/error.vue не удалён и продолжает работать: он отвечает за ошибки при
+  клиентской навигации внутри уже загруженного приложения.
+-->
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/nunito-sans-cyrillic-400-normal.woff2" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/jura-cyrillic-700-normal.woff2" crossorigin="anonymous">
+<link rel="icon" href="/favicon.ico">
+<style>
+:root{
+  --bg:#F7F8F5; --card:#FFFFFF; --ink:#14261E; --muted:#5C6B62;
+  --accent:#2F7A4F; --accent-ink:#26633F; --accent-soft:#E3F0E7; --line:#E4E7E1;
+  --maxw:1180px; --pad:clamp(18px,5vw,60px);
+  --display:'Jura','Nunito Sans',-apple-system,"Segoe UI",Arial,sans-serif;
+  --sans:'Nunito Sans',-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --shadow:0 2px 12px rgba(20,38,30,.06);
+}
+*{box-sizing:border-box}
+html{font-size:106.25%}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+a{color:inherit}
+h1,h2{margin:0;font-family:var(--display);font-weight:700;line-height:1.22;letter-spacing:-.012em}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.nav{border-bottom:1px solid var(--line);background:rgba(247,248,245,.92)}
+.nav__row{display:flex;justify-content:space-between;align-items:center;height:76px;gap:16px}
+.brand{font-family:var(--display);font-weight:700;letter-spacing:.01em;font-size:1.05rem;text-decoration:none;color:var(--accent)}
+.nav__tel{font-size:.88rem;font-weight:600;text-decoration:none}
+.nav__tel:hover{color:var(--accent-ink)}
+.section{padding-block:clamp(44px,6vw,84px)}
+.eyebrow{color:var(--accent);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.lead{color:var(--muted);margin-top:14px;max-width:62ch}
+.links404{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.card404{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:22px;transition:box-shadow .18s ease,transform .18s ease,border-color .18s ease}
+.card404:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(20,38,30,.10)}
+.card404 b{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--accent-ink);letter-spacing:-.008em}
+.card404 span{display:block;margin-top:8px;font-size:.86rem;color:var(--muted)}
+.callout{margin-top:32px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:20px;padding:20px 22px;font-size:.93rem;max-width:70ch}
+.callout a{color:var(--accent-ink);font-weight:700;white-space:nowrap}
+.footer{border-top:1px solid var(--line);padding-block:30px;margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;color:var(--muted);font-size:.85rem}
+.footer__links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.footer a{text-decoration:none}
+.footer a:hover{color:var(--accent-ink);text-decoration:underline}
+a:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:4px}
+@media (max-width:900px){.links404{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){
+  .links404{grid-template-columns:1fr}
+  .footer{flex-direction:column;align-items:flex-start}
+  .footer__links{flex-direction:column;gap:2px}
+  .footer__links a{display:flex;align-items:center;min-height:40px}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://manip-mo.example/#organization","name":"МАНИП-МО","telephone":"+79070311737","email":"info@manip-mo.example","url":"https://manip-mo.example","priceRange":"₽₽","address":{"@type":"PostalAddress","addressRegion":"Московская область","addressCountry":"RU"},"geo":{"@type":"GeoCoordinates","latitude":55.8094,"longitude":37.9581},"areaServed":"Московская область","openingHours":"Mo-Su 00:00-24:00"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://manip-mo.example/"},{"@type":"ListItem","position":2,"name":"Страница не найдена"}]}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav__row wrap">
+    <a class="brand" href="/">МАНИП-МО</a>
+    <a class="nav__tel" href="tel:+79070311737">+7 (907) 031-17-37</a>
+  </div>
+</header>
+
+<main>
+  <section class="section wrap">
+    <span class="eyebrow">404</span>
+    <h1 style="margin-top:14px;font-size:clamp(1.8rem,4vw,2.6rem)">Такой страницы нет</h1>
+    <p class="lead">Ссылка устарела или в адресе опечатка. Часть старых адресов мы перенесли:
+      страницы отдельных моделей стали одной сравнительной таблицей, а разделы по городам —
+      разделами по шоссе. Ниже — то, что существует сейчас.</p>
+
+    <div class="links404">
+      <a class="card404" href="/#konfigurator">
+        <b>Конфигуратор и цены</b>
+        <span>Груз и километр от МКАД — на выходе класс машины, борт, вылет и цена смены.</span>
+      </a>
+      <a class="card404" href="/gruzy/">
+        <b>Грузы</b>
+        <span>Шесть типов груза: что ограничивает каждый — борт, длина, габарит или строповка.</span>
+      </a>
+      <a class="card404" href="/napravleniya/">
+        <b>Направления</b>
+        <span>Шесть шоссе с километражом от МКАД: плечо считается по трассе, а не по прямой.</span>
+      </a>
+      <a class="card404" href="/park/">
+        <b>Парк техники</b>
+        <span>Четыре машины в одной таблице: борт против вылета, с паспортом в каждой строке.</span>
+      </a>
+      <a class="card404" href="/documents/">
+        <b>Документы</b>
+        <span>Что приезжает вместе с машиной и что заказчик вправе проверить на месте.</span>
+      </a>
+      <a class="card404" href="/faq/">
+        <b>Вопросы</b>
+        <span>Пропуск на МКАД, режим доступа на объект, что входит в смену и что нет.</span>
+      </a>
+    </div>
+
+    <p class="callout">Если искали конкретную задачу и не нашли — быстрее позвонить:
+      <a href="tel:+79070311737">+7 (907) 031-17-37</a>. Диспетчер принимает заявки
+      круглосуточно и подберёт класс машины по грузу за один разговор.</p>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <span>© 2026 МАНИП-МО · [SITE_02_DOMAIN]</span>
+  <nav class="footer__links" aria-label="Служебные страницы">
+    <a href="/kontakty/">Контакты и реквизиты</a>
+    <a href="/politika-obrabotki-personalnyh-dannyh/">Политика обработки ПД</a>
+    <a href="/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку ПД</a>
+  </nav>
+  <a href="tel:+79070311737">+7 (907) 031-17-37</a>
+</footer>
+</body>
+</html>

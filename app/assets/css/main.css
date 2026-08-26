@@ -1,0 +1,549 @@
+:root {
+  --bg: #F7F8F5;
+  --card: #FFFFFF;
+  --ink: #14261E;
+  --muted: #5C6B62;
+  --accent: #2F7A4F;
+  /* Глубокий оттенок того же акцента — для ТЕКСТА на --accent-soft и на белом.
+     Причина (замер, волна 12): --accent на --accent-soft даёт 4.45:1, это ниже
+     минимума WCAG 1.4.3 (4.5:1) для обычного текста. --accent-ink на --accent-soft
+     = 6.09:1, на --card = 7.15:1, на --bg = 6.70:1. Палитра не меняется — это
+     затемнение существующего зелёного, а не новый цвет. */
+  --accent-ink: #26633F;
+  --accent-soft: #E3F0E7;
+  /* Граница мятной плитки. --line (серый) на мятном фоне читается как грязь:
+     это холодный серый поверх тёплого зелёного. Тот же зелёный, только светлее
+     краёв, — 1,26:1 к --accent-soft, ровно граница-намёк, не рамка. */
+  --accent-line: #CBE0D2;
+  --line: #E4E7E1;
+  /* Граница полей ввода: --line даёт всего 1.25:1 к белому и не проходит
+     WCAG 1.4.11 (нетекстовый контраст 3:1) для органов управления формы.
+     --field-line = 3.41:1 к белому и 3.20:1 к фону страницы. */
+  --field-line: #828E86;
+  /* Состояние ошибки поля. Единственный цвет вне зелёной палитры, и он здесь
+     не «для разнообразия»: ошибку нельзя передавать оттенком того же акцента,
+     которым отмечено нормальное состояние (WCAG 1.4.1 — не только цветом, но и
+     не тем же цветом). Приглушённый кирпичный, а не сигнальный алый: 6.57:1
+     к белому, то есть годится и для текста подсказки, а не только для рамки. */
+  --danger: #A33A2A;
+  --danger-soft: #FBEDEA;
+  --maxw: 1180px;
+  --pad: clamp(18px, 5vw, 60px);
+
+  /* ─── Типографическая лестница ──────────────────────────────────────────
+     Волна визуальной приёмки (26.08.2026). Замер собранной страницы показал
+     27 РАЗНЫХ кеглей текста на одной только главной, и соседние ступени
+     отличались на 0,3–1,2%: 11,9 и 11,934 px; 14,45 и 14,62; 15,64 и 15,81;
+     16 и 16,15. Разница в один процент не читается как иерархия — она читается
+     как несобранность. Ниже шесть ступеней с шагом 11–25% (лестница
+     расширяется кверху: внизу глазу нужен меньший шаг, вверху — больший),
+     и весь сайт пользуется только ими. Всё в rem: корневой кегль 106,25%
+     компенсирует низкий x-height Nunito Sans (см. ниже). */
+  --fs-2xs: .72rem;   /* микро-капс: метки, надстрочные подписи */
+  --fs-xs: .8rem;     /* сноски, подписи таблиц, hint под полем */
+  --fs-sm: .89rem;    /* вторичный текст, ячейки таблиц, описания карточек */
+  --fs-md: 1rem;      /* базовый текст и все органы управления */
+  --fs-lg: 1.2rem;    /* h3, заголовок плитки, лид */
+  --fs-xl: 1.5rem;    /* крупная цитата, минимальный h2 */
+  /* Заголовки. До этой волны h1 не имел ни одного правила и рисовался
+     браузерным дефолтом вложенного заголовка — 1.5em, то есть 25,5 px, тогда
+     как h2 доходил до 37,4 px. Главный заголовок страницы был на 32% МЕЛЬЧЕ
+     подзаголовка (замер на /gruzy/zhbi-i-plity/, /park/, /blog/ustroystvo-kmu/).
+     Теперь ступени разведены: 42,5 → 33,2 → 20,4 → 17 px на десктопе. */
+  --fs-h1: clamp(1.55rem, 1.22rem + 1.6vw, 2.5rem);
+  --fs-h2: clamp(1.5rem, 1.24rem + 1.15vw, 1.95rem);
+  /* Число-факт. Отдельная ступень выше h2: цифра на этом сайте — приём, а не
+     подпись, и она обязана быть крупнее соседнего заголовка, а не мельче
+     (было: 35,7 px число против 37,4 px заголовка рядом). */
+  --fs-num: clamp(1.7rem, 1.2rem + 2.4vw, 3rem);
+
+  /* ─── Скругления ────────────────────────────────────────────────────────
+     Три ступени, а не одна: инсет внутри плитки скруглён меньше плитки,
+     плитка — меньше крупной панели. Концентричность — это то, что отличает
+     bento от «блоков с border-radius: 20px». Ступень 28px была записана
+     в design-code.md с самого начала («крупные секции — 28px») и до этой
+     волны не применялась ни разу. */
+  --r-sm: 12px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-pill: 100px;
+
+  /* Волна приёмки (26.08.2026). Пара гарнитур сменилась целиком: было
+     Satoshi (Fontshare CDN) + Inter (Google Fonts), стало Jura + Nunito Sans,
+     обе локальными woff2 из public/fonts. Inter стоял ещё на трёх сайтах сети
+     и не давал этому собственного лица; Jura геометрична и слегка технична,
+     Nunito Sans мягкая и открытая — воздушность bento-кода сохраняется, звучание
+     меняется. Метрики новых гарнитур ощутимо другие, что и потребовало правок
+     кегля, интерлиньяжа и трекинга ниже (см. --fs-* и h1/h2/h3). */
+  --display: 'Jura', 'Nunito Sans', -apple-system, "Segoe UI", Arial, sans-serif;
+  --sans: 'Nunito Sans', -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  /* Тень в два слоя и с зелёным подмесом. Один слой rgba(20,38,30,.06) давал
+     ровное серое гало без направления; здесь ближний слой рисует контактную
+     кромку, дальний — рассеянную тень со сдвигом вниз. Источник света один
+     и сверху — у всех теней сайта. */
+  --shadow: 0 1px 2px rgba(20, 38, 30, .045), 0 6px 18px -6px rgba(20, 38, 30, .10);
+  --shadow-hover: 0 2px 4px rgba(20, 38, 30, .05), 0 18px 38px -12px rgba(30, 90, 58, .22);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, .7);
+
+  /* Поверхности, которые рисует браузер, а не мы: нативные списки, скроллбары,
+     каретка, галочки. По умолчанию они принадлежат системе, а не сайту, —
+     и на светло-зелёной bento-сетке системный синий чекбокс виден сразу.
+     color-scheme здесь ещё и фиксирует светлую тему нативных <select>:
+     без него у пользователя с тёмной системной темой выпадающий список
+     открывался тёмным поверх светлого сайта. */
+  color-scheme: light;
+  accent-color: var(--accent);
+  scrollbar-color: #B4C6BB var(--bg);
+  scrollbar-width: thin;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+/* Компенсация роста кегля под новые метрики. Замеры из самих woff2:
+   x-height у Inter 0,546em, у Nunito Sans 0,484em — строчные новой гарнитуры на
+   11% ниже при том же font-size, то есть весь мелкий текст сайта визуально
+   «сел». Единственная общая ручка, которая это чинит, не трогая раскладку, —
+   корневой кегль: все размеры на сайте заданы в rem, а отступы, сетки и --maxw
+   в px, поэтому текст растёт, а коробки остаются на месте. 106,25% = 17px при
+   стандартных 16px. */
+html { font-size: 106.25%; }
+/* Якоря (#order, #konfigurator, ToC) до этой волны прыгали мгновенно. */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: var(--fs-md); line-height: 1.6; }
+::selection { background: #CFE6D6; color: var(--ink); }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #B4C6BB; border-radius: 100px; border: 3px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Высота мобильной CTA-панели из layouts/default.vue (.mcta):
+   8px верхний паддинг + 48px кнопка + нижний паддинг с учётом safe-area iOS.
+   Ниже 760px резервируем это место у body, иначе футер уходит под панель. */
+/* 860, а не 760: панель показывается на той же ширине, где шапка сворачивается
+   в бургер (см. комментарий в layouts/default.vue). */
+@media (max-width: 860px) {
+  :root { --mcta-h: calc(56px + max(12px, env(safe-area-inset-bottom))); }
+  body { padding-bottom: calc(var(--mcta-h) + 8px); }
+}
+/* Якорные переходы (#order, #calculator, ToC) не должны прятать заголовок
+   под липкой шапкой высотой 76px */
+section[id] { scroll-margin-top: 92px; }
+a { color: inherit; }
+/* Подчёркивание ссылок в тексте по умолчанию проходит сквозь выносные элементы
+   кириллицы (у, р, д). Отступ и толщина от гарнитуры — самая дешёвая правка,
+   которая отличает набранный текст от текста «как отдал браузер». */
+a { text-underline-offset: .18em; text-decoration-thickness: from-font; }
+/* Заголовки под метрики Jura.
+   · line-height 1.15 → 1.22. У Jura ascender 0,965em и descender 0,218em, то есть
+     содержимое строки занимает 1,183em — при 1,15 соседние строки двухстрочного
+     заголовка физически наезжали бы друг на друга.
+   · letter-spacing -0.012em. Jura — геометрический шрифт с широкими боковыми
+     полуапрошами (advance строчной «o» 0,634em против 0,55em у Inter); на
+     крупном кегле буквы расползались, лёгкий отрицательный трекинг возвращает
+     заголовку плотность, не превращая его в конденс.
+   · text-wrap: balance — заголовки сайта длинные («Шесть грузов, по которым чаще
+     всего вызывают манипулятор»), и последняя строка регулярно оставалась
+     одиноким словом. */
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; line-height: 1.22; letter-spacing: -.012em; text-wrap: balance; }
+h1 { font-size: var(--fs-h1); letter-spacing: -.018em; }
+h2 { font-size: var(--fs-h2); }
+/* На мелком кегле (карточки, related, ToC) отрицательный трекинг Jura уже вредит —
+   возвращаем нормальный. */
+h3 { font-size: var(--fs-lg); letter-spacing: -.004em; }
+p { margin: 0; text-wrap: pretty; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
+
+/* ─── Поверхности bento ──────────────────────────────────────────────────
+   Три яруса вместо одного. До этой волны любой контейнер сайта был одним и тем
+   же: белый + рамка 1px + мягкая тень, — и четыре сетки подряд читались как одна.
+     · .card   — плитка (радиус --r-md);
+     · .panel  — крупная секция-панель (радиус --r-lg, больше воздуха внутри);
+     · .inset  — вложенный блок внутри плитки (мятный, радиус --r-sm,
+                 БЕЗ рамки и без тени: вложенная рамка внутри рамки — это шум).
+   Концентричность соблюдена: --r-sm < --r-md < --r-lg. */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--shadow); transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease; }
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: clamp(22px, 3.2vw, 40px); }
+.panel--soft { background: var(--accent-soft); border-color: var(--accent-line); box-shadow: none; }
+.inset { background: var(--accent-soft); border-radius: var(--r-sm); padding: clamp(14px, 2vw, 20px); }
+
+/* Волна 123: 3D-наклон карточек услуг
+   (.cargo-card, см. plugins/card-tilt.client.ts). Живёт в общем main.css, а не
+   в <style scoped> отдельной страницы — .cargo-card рендерится и на главной,
+   и на /gruzy/, и правило должно действовать в обоих местах без дублирования.
+   perspective — на самой карточке (точка схода в её центре, наклон не
+   «разъезжается» по сетке), var(--rx/--ry, 0deg) — без скрипта запись
+   вырождается в обычный translateY-подъём .card:hover, ничего не ломается. */
+.cargo-card { position: relative; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.cargo-card:hover, .cargo-card:focus-visible {
+  transform: perspective(900px) translateY(-4px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 120ms cubic-bezier(0.22,1,0.36,1), box-shadow .18s ease, border-color .18s ease;
+}
+.cargo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  background: radial-gradient(220px 220px at var(--gx, 50%) var(--gy, 0%), rgba(47,122,79,.14), rgba(47,122,79,0) 62%);
+}
+.cargo-card:hover::after, .cargo-card:focus-visible::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .cargo-card, .cargo-card::after { transition: none; }
+  .cargo-card { --rx: 0deg !important; --ry: 0deg !important; }
+}
+
+/* ─── Карточка груза: ОДНО правило на весь сайт ─────────────────────────
+   Волна визуальной приёмки. .cargo-grid/.cargo-card были объявлены дважды —
+   в pages/index.vue и в pages/gruzy/index.vue — и уже разошлись: на главной
+   карточка получала подсветку рамки и зелёное свечение при наведении, в
+   разделе «Грузы» — нет, хотя это буквально одна и та же карточка одного и
+   того же груза. Правило переехало сюда целиком; страницам осталось только
+   то, чего у соседа нет (facts на главной, limiter/start в разделе).
+   align-items: start — сетка больше не растягивает все шесть плиток по самой
+   длинной: у карточки «Контейнер» под текстом висело 90 px пустоты. Рваный
+   низ — это и есть bento, ровный — это таблица из шести одинаковых прямоугольников. */
+.cargo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.cargo-card { display: block; text-decoration: none; padding: clamp(20px, 2.2vw, 26px); }
+.cargo-card h3 { font-size: var(--fs-lg); }
+.cargo-card__tag { margin-top: 6px; color: var(--muted); font-size: var(--fs-sm); }
+/* Иконка груза: та же мягкая зелёная плашка, что и .accent-soft-бейджи по сайту.
+   Радиус 14px = --r-md минус паддинг вокруг иконки: концентрично плитке. */
+.cargo-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  margin-bottom: 14px;
+  transition: background-color .18s ease, color .18s ease;
+}
+.cargo-card__icon svg { width: 26px; height: 26px; }
+.cargo-card:hover .cargo-card__icon { background: var(--accent); color: #fff; }
+.cargo-card:hover, .dir-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 16px 34px -10px rgba(47, 122, 79, .28), var(--shadow-hover);
+}
+@media (max-width: 1000px) { .cargo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .cargo-grid { grid-template-columns: 1fr; } }
+
+/* ─── Ритм секций ────────────────────────────────────────────────────────
+   Отступ сверху заметно больше отступа снизу. Симметричный padding-block —
+   самая частая причина, по которой десять секций подряд читаются одной
+   бесконечной полосой: заголовок следующего раздела висит ровно посередине
+   между своим текстом и чужим. */
+.section { padding-block: clamp(48px, 6.4vw, 92px) clamp(34px, 4.2vw, 60px); }
+.section--tight { padding-block: clamp(24px, 3vw, 40px); }
+.section-head { max-width: 760px; margin-bottom: clamp(24px, 3.2vw, 36px); }
+.eyebrow { color: var(--accent-ink); font-weight: 700; font-size: var(--fs-2xs); letter-spacing: .06em; text-transform: uppercase; }
+.section-head h1 { margin-top: 4px; }
+.section-head h2 { margin-top: 10px; }
+.section-head p { margin-top: 14px; color: var(--muted); font-size: var(--fs-md); max-width: 64ch; }
+/* Мера строки — на СОДЕРЖИМОМ, а не на контейнере.
+   Волна визуальной приёмки: .prose ограничивалась 74ch целиком, и таблицы
+   параметров (26 штук по сайту) сжимались до ширины колонки текста — на
+   /gruzy/zhbi-i-plity/ пятиколоночная таблица жила в 755px, пока справа от неё
+   стояло 300px пустоты. Читательская мера нужна абзацу, а не таблице.
+   Ограничение снято с контейнера и перенесено на прямых потомков; исключение
+   сделано ровно для обёрток таблиц. Никаких vw и отрицательных margin: обе
+   техники дают горизонтальный скролл, когда появляется вертикальная полоса
+   прокрутки (100vw шире clientWidth на её ширину). */
+.prose { max-width: none; }
+/* Часть страниц вешает .prose на тот же узел, что и .wrap («section class="section
+   wrap prose"» — шесть статей блога, документы, FAQ). У .wrap и .prose одинаковая
+   специфичность, поэтому снятие ограничения с .prose молча снимало бы и внешнее
+   ограничение полосы набора у .wrap: замерено на /blog/ustroystvo-kmu/ — колонка
+   статьи растягивалась на все 1280px вместо 1180px и уезжала левее шапки.
+   Ограничение .wrap возвращается явно; мера строки живёт на потомках. */
+.wrap.prose { max-width: var(--maxw); }
+.prose > * { max-width: 74ch; }
+.prose > .ptbl-wrap, .prose > .tablewrap { max-width: none; }
+/* Проза, поставленная В плитку, остаётся узкой колонкой: широкая панель
+   с текстом в 74ch посередине — это панель с дырой справа. */
+.prose.panel { max-width: 82ch; }
+.prose p + p, .prose h3 + p, .prose ul + p, .prose p + h3, .prose p + ul { margin-top: 18px; }
+/* Маркер списка — не браузерный disc, а миниатюрная плитка: тот же скруглённый
+   квадрат, из которого собран весь сайт, только 7px. Это единственная точка,
+   где дизайн-код сайта проговаривается в каждом абзаце каждой из 39 страниц. */
+.prose ul { margin: 0; padding-left: 0; list-style: none; }
+.prose ul > li { position: relative; padding-left: 26px; }
+.prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: .58em;
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.prose li + li { margin-top: 10px; }
+.prose ol { margin: 0; padding-left: 22px; }
+.prose ol li + li { margin-top: 10px; }
+.prose a { color: var(--accent-ink); font-weight: 600; }
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; font-weight: 700; padding: 14px 26px; border: none; border-radius: var(--r-pill); cursor: pointer; font-family: var(--sans); font-size: var(--fs-md); text-decoration: none; box-shadow: 0 2px 8px -2px rgba(30, 90, 58, .40); transition: transform .16s cubic-bezier(.22, 1, .36, 1), box-shadow .16s ease, background-color .16s ease; }
+.btn:hover { transform: translateY(-2px); background: #2A6E47; box-shadow: 0 10px 22px -8px rgba(30, 90, 58, .55); }
+/* Нажатие. Кнопка без :active — это кнопка, которая на телефоне никак
+   не отвечает на палец: hover там не существует вовсе. */
+.btn:active { transform: translateY(1px) scale(.985); background: var(--accent-ink); box-shadow: 0 1px 3px rgba(30, 90, 58, .4); }
+.crumbs { font-size: var(--fs-xs); color: var(--muted); padding-block: 18px; display: flex; gap: 6px; flex-wrap: wrap; }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--accent-ink); text-decoration: underline; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.faq__item { border-bottom: 1px solid var(--line); padding: 18px 0; transition: border-color .18s ease; }
+.faq__item summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq__item summary:hover { color: var(--accent-ink); }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 10px;
+  background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2326633F' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center/16px no-repeat;
+  transition: transform .22s cubic-bezier(.22, 1, .36, 1), background-color .18s ease;
+}
+.faq__item summary:hover::after { background-color: #D3E7DA; }
+.faq__item[open] summary::after { transform: rotate(180deg); }
+.faq__item[open] { border-color: var(--accent-line); }
+.faq__item p { margin-top: 12px; color: var(--muted); font-size: var(--fs-sm); max-width: 74ch; animation: faq-reveal .2s cubic-bezier(.22, 1, .36, 1); }
+@keyframes faq-reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .faq__item p { animation: none; } }
+
+/* Таблица параметров содержательной страницы (GENERIYA-2026 §5.4 п.6: модели
+   извлекают таблицу охотнее прозы). Один общий класс, а не двадцать пять локальных
+   <style scoped>: правило одно — значит и правка одна, и все таблицы сайта заведомо
+   выглядят одинаково. Оформление снято с уже существовавшей .km на страницах
+   направлений, чтобы новые таблицы не читались как чужой элемент.
+   Мобильная безопасность сделана двумя независимыми механизмами:
+     · .ptbl-wrap с overflow-x — прокрутка живёт внутри обёртки, а не у body,
+       поэтому даже широкая таблица не даёт горизонтального скролла всей страницы;
+     · перенос внутри слова на ячейках — см. отдельный комментарий ниже. */
+/* ─── Прокручиваемая обёртка таблицы: край показывает, что дальше есть ещё ──
+   Волна мобильной приёмки (26.08.2026). Обёртки со скроллом были у сайта с
+   самого начала, но ничем не сообщали, что таблица прокручивается: на телефоне
+   полосы прокрутки не видно, пока её не тронешь пальцем. Тень у края решает это
+   без единого нового слова: пока справа есть непрочитанные колонки, у края
+   лежит мягкая тень; доскроллил до конца — тень исчезает сама.
+   Приём чисто фоновый (background-attachment: local vs scroll), без JS и без
+   разметки. --tbl-fade — цвет поверхности, НА КОТОРОЙ лежит таблица: у таблиц
+   направлений это фон страницы, у таблицы конфигуратора — белая плитка. */
+.ptbl-wrap, .km__wrap, .cfg__tablewrap {
+  --tbl-fade: var(--card);
+  background:
+    linear-gradient(to right, var(--tbl-fade) 40%, rgba(255, 255, 255, 0)) left center / 26px 100% no-repeat local,
+    linear-gradient(to left, var(--tbl-fade) 40%, rgba(255, 255, 255, 0)) right center / 26px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(20, 38, 30, .16), rgba(20, 38, 30, 0)) left center / 11px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(20, 38, 30, .16), rgba(20, 38, 30, 0)) right center / 11px 100% no-repeat scroll;
+}
+/* Все 26 обёрток .ptbl-wrap на сайте лежат прямо на фоне страницы (проверено
+   grep'ом по разметке: ни одна не вложена в .panel/.card/.inset), поэтому и
+   растворяется край тени в фон страницы, а не в белую плитку. */
+.ptbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--r-sm); --tbl-fade: var(--bg); }
+.ptbl { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); font-variant-numeric: tabular-nums; }
+.ptbl caption { caption-side: top; text-align: left; font-size: var(--fs-xs); color: var(--muted); padding-bottom: 10px; max-width: 78ch; }
+.ptbl th, .ptbl td { border-bottom: 1px solid var(--line); padding: 11px 13px; text-align: left; vertical-align: top; }
+.ptbl thead th { background: var(--accent-soft); font-family: var(--sans); font-size: var(--fs-2xs); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-ink); }
+.ptbl thead th:first-child { border-top-left-radius: var(--r-sm); }
+.ptbl thead th:last-child { border-top-right-radius: var(--r-sm); }
+.ptbl th[scope='row'] { font-weight: 600; }
+.ptbl tbody tr { transition: background-color .15s ease; }
+.ptbl tbody tr:hover { background: #F1F7F3; }
+.ptbl tbody tr:last-child th, .ptbl tbody tr:last-child td { border-bottom: none; }
+/* Перенос внутри слова — ТОЛЬКО на узком экране.
+   Волна визуальной приёмки: `overflow-wrap: anywhere` стояло без медиазапроса
+   и потому действовало и на десктопе. Оно влияет на min-content ячейки, то есть
+   на то, какую ширину колонка запрашивает у авторазметки таблицы, — и на 1280 px
+   заголовок «Норматив» рвался на «Нормати/в», «порядка 1,3 т» на «порядк/а».
+   Слова, разорванные посреди слога на широком экране, — это не защита от
+   переполнения, это дефект набора. На десктопе оставлен break-word: он спасает
+   от единственного неразрывного монстра, но не трогает min-content, поэтому
+   слова остаются целыми. (Ниже 760px раньше возвращался anywhere — «там ширина
+   дороже целостности слова». Волна мобильной приёмки 26.08.2026 это отменила:
+   на кадрах видно, что ценой была не теснота, а разорванные посреди разряда
+   числа. Подробности — в комментарии к медиазапросу ниже.) */
+.ptbl th, .ptbl td { overflow-wrap: break-word; }
+/* Волна мобильной приёмки (26.08.2026). ЗДЕСЬ СТОЯЛО `anywhere` — и это был
+   не запас прочности, а поломка. Найдено на кадрах 375px: `anywhere` уменьшает
+   min-content ячейки до ОДНОГО СИМВОЛА, поэтому авторазметка таблицы всегда
+   впихивала пять колонок в ширину телефона и никогда не отдавала прокрутку
+   обёртке, которая для этого и заведена. Цена этого — разорванные посреди себя
+   числа и слова: на /napravleniya/gorkovskoe/ «8 050» читалось как «8 0 / 50»,
+   «Балашиха» — как «Балаших / а», заголовок «Плечо» — как «Пле / чо».
+   Обёртка со скроллом при этом простаивала: таблице всегда «хватало» места.
+   break-word оставляет min-content равным самому длинному слову: таблица честно
+   запрашивает свою ширину, перестаёт помещаться и обёртка наконец прокручивается —
+   ровно так, как это давно работает у таблицы конфигуратора (min-width: 560px).
+   Неразрывный пробел внутри «8 050» (его ставит toLocaleString('ru-RU')) при
+   break-word тоже наконец работает и держит число одним куском. */
+@media (max-width: 760px) {
+  /* min-width на ячейке — обязательная вторая половина этой правки, и найдена
+     она тоже на кадре. Одного break-word мало: авторазметка таблицы ставит
+     колонке ширину по САМОМУ ДЛИННОМУ СЛОВУ, и на /faq/, где две колонки из
+     трёх — это предложения, получилось худшее из обоих миров: таблица всё
+     равно шире экрана, а в каждой колонке по одному слову в строке («Порог /
+     грузового / пропуска на / МКАД; / проходит / ровно между…»), и одна строка
+     таблицы вытянулась на пол-экрана. 10em задаёт колонке нижнюю границу
+     ширины: числовые таблицы это не трогает (их колонки и так шире), а
+     текстовые получают 2–4 слова в строке и честную горизонтальную прокрутку
+     вместо вертикальной колбасы. */
+  .ptbl th, .ptbl td { overflow-wrap: break-word; min-width: 10em; }
+  /* Первая колонка не уезжает вместе с числами: без неё, прокрутив таблицу
+     вправо, человек видит четыре столбца цифр и ни одной подписи, к чему они.
+     border-collapse: separate — обязателен: при collapse рамки принадлежат
+     таблице, а не ячейке, и у липкой колонки они остаются на месте, оставляя
+     под ней полосу чужих линий. */
+  .ptbl { border-collapse: separate; border-spacing: 0; }
+  .ptbl th[scope='row'], .ptbl thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    max-width: 42vw;
+    background: var(--card);
+    box-shadow: 1px 0 0 var(--line);
+  }
+  .ptbl thead th:first-child { background: var(--accent-soft); }
+}
+
+/* Таблица «километры по шоссе» страниц направлений.
+   Волна визуальной приёмки: правило лежало ШЕСТЬЮ ИДЕНТИЧНЫМИ КОПИЯМИ в
+   <style scoped> шести страниц направлений. Пока копии совпадают, это просто
+   мёртвый вес; в тот день, когда кто-то поправит одну, шесть страниц одного
+   раздела начнут выглядеть по-разному — именно так уже разъехалась
+   .cargo-card между главной и /gruzy/. Правило одно и живёт здесь. */
+/* Таблица направлений лежит прямо на фоне страницы, а не в белой плитке —
+   значит и растворяться край тени должен в фон страницы. */
+.km__wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--r-sm); --tbl-fade: var(--bg); }
+.km { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); font-variant-numeric: tabular-nums; }
+.km caption { caption-side: top; text-align: left; font-size: var(--fs-xs); color: var(--muted); padding-bottom: 10px; }
+.km th, .km td { border-bottom: 1px solid var(--line); padding: 11px 13px; text-align: right; overflow-wrap: break-word; }
+.km th[scope='row'], .km thead th:first-child { text-align: left; }
+.km thead th { background: var(--accent-soft); font-family: var(--sans); font-size: var(--fs-2xs); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-ink); }
+.km thead th:first-child { border-top-left-radius: var(--r-sm); }
+.km thead th:last-child { border-top-right-radius: var(--r-sm); }
+.km tbody tr { transition: background-color .15s ease; }
+.km tbody tr:hover { background: #F1F7F3; }
+.km tbody tr:last-child th, .km tbody tr:last-child td { border-bottom: none; }
+
+/* ─── Подпись таблицы не уезжает вместе с таблицей ───────────────────────
+   Волна мобильной приёмки (26.08.2026). Как только таблица стала честно шире
+   экрана (см. правку overflow-wrap выше), её <caption> получил ширину ТАБЛИЦЫ,
+   а не обёртки, и обрезался по правому краю прямо посреди фразы — «Плечо от
+   МКАД и цена смены по классам, ₽. Плечо =» на /napravleniya/gorkovskoe/,
+   «…отсюда видно, н» на /faq/. Ровно этот дефект прошлая волна уже чинила у
+   таблицы конфигуратора, вынося подпись из обёртки руками в отдельный <p>;
+   здесь он лечится одним правилом на все таблицы сайта: подпись прилипает к
+   левому краю окна прокрутки и переносится по ширине страницы, а не таблицы.
+   Правило стоит НИЖЕ обоих объявлений `.ptbl caption` / `.km caption` намеренно:
+   у .ptbl caption уже есть свой max-width (78ch), и при равной специфичности
+   выигрывает тот, кто объявлен позже. Первая попытка поставить это правило
+   выше по файлу молча не сработала ровно на .ptbl — а на .km сработала,
+   потому что там конкурирующего max-width нет. */
+.km caption, .ptbl caption {
+  position: sticky;
+  left: 0;
+  max-width: calc(100vw - 2 * var(--pad));
+  box-sizing: border-box;
+}
+@media (min-width: 761px) {
+  /* На широком экране таблицы помещаются целиком, прокрутки нет, и мера строки
+     подписи снова определяется читаемостью, а не шириной окна. */
+  .ptbl caption { max-width: 78ch; }
+}
+/* Та же правка, что и у .ptbl выше, и по той же причине — только здесь ущерб
+   был виден лучше всего: таблица направлений это шесть колонок цифр, и на
+   375px `anywhere` рвал их все. Замерено на кадре /napravleniya/gorkovskoe/:
+   «8 050» → «8 0 / 50», «11 570» → «11 / 570», «Балашиха» → «Балаших / а»,
+   «Плечо» → «Пле / чо». Число, разорванное между разрядами, — это не тесная
+   вёрстка, это другая цифра. */
+@media (max-width: 760px) {
+  .km th, .km td { overflow-wrap: break-word; padding: 10px; }
+  .km { border-collapse: separate; border-spacing: 0; }
+  /* Название точки держится у левого края, пока цены уезжают вправо: иначе
+     прокрученная таблица показывает пять столбцов рублей без единого города. */
+  .km th[scope='row'], .km thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    max-width: 40vw;
+    background: var(--bg);
+    box-shadow: 1px 0 0 var(--line);
+  }
+  .km thead th:first-child { background: var(--accent-soft); }
+}
+
+/* --- визуальный апгрейд (волна полировки) --- */
+
+
+/* «Кейсы» — иллюстративные сценарии */
+.keysy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.keysy-card { display: block; text-decoration: none; padding: clamp(22px, 2.4vw, 28px); }
+.keysy-card__tag { color: var(--accent-ink); font-size: var(--fs-2xs); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.keysy-card h2, .keysy-card h3 { font-size: var(--fs-lg); margin-top: 10px; }
+.keysy-card__note { margin-top: 10px; color: var(--muted); font-size: var(--fs-sm); }
+.keysy-card:hover { border-color: var(--accent); box-shadow: 0 16px 34px -10px rgba(47, 122, 79, .24), var(--shadow-hover); }
+@media (max-width: 800px) { .keysy-grid { grid-template-columns: 1fr; } }
+
+
+/* --- волна 10: focus-visible и скролл-реколы (11.08.2026) --- */
+/* Волна 16: отсюда удалены мёртвые правила .stat-bar, .marquee, .trust-bar,
+   .card-icon, .park-card/.park-grid/.ttx — вместе с секциями и страницами,
+   которые их использовали (текстовый hero, бегущая строка, карточки моделей).
+   CSS без разметки — такой же долг, как код без вызова. */
+
+/* единое кольцо фокуса на всех интерактивных элементах — доступность с клавиатуры */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn:focus-visible, .card:focus-visible { outline-offset: 4px; }
+
+/* ─── Состояние ошибки поля ─────────────────────────────────────────────
+   :user-invalid, а не :invalid: пустое обязательное поле невалидно с момента
+   загрузки страницы, и на :invalid форма краснела бы ещё до того, как человек
+   к ней прикоснулся. :user-invalid загорается только после попытки ввода или
+   отправки. Не поддерживающие его браузеры просто не получают подсветку —
+   нативная валидация от этого не страдает. */
+input:user-invalid, textarea:user-invalid, select:user-invalid {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+input:user-invalid:focus-visible, textarea:user-invalid:focus-visible { outline-color: var(--danger); }
+
+/* скролл-реколы карточек — IntersectionObserver добавляет is-revealed, JS-fallback таймаутом.
+   Волна визуальной приёмки: из целей рекола убраны .section (см.
+   plugins/scroll-reveal.client.ts). Раньше ОДИН И ТОТ ЖЕ выезд на 18px играли
+   и секция, и каждая карточка внутри неё — то есть весь сайт от начала до конца
+   состоял из одного повторяющегося движения. Осталось одно авторское движение:
+   плитки собираются в bento-сетку. Кривая — выброс (ease-out-expo), а не ease:
+   плитка приходит быстро и мягко тормозит, как предмет с массой. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px) scale(.985);
+  transition: opacity .5s cubic-bezier(.22, 1, .36, 1), transform .55s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal].is-revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { transition: none; opacity: 1; transform: none; }
+}
+
+/* Волна 19: карточки с классом .card, помеченные под скролл-реколл (park/keysy/post
+   и теперь ещё грузовые/гео-карточки главной), молча теряли подъём при наведении
+   ПОСЛЕ первого реколла. Причина: [data-reveal].is-revealed задаёт transform
+   с той же специфичностью (0,2,0), что и .card:hover, и, будучи объявленным позже
+   в файле, выигрывал каскад — hover оставлял только тень. Селектор ниже специфичнее
+   (0,4,0) и всегда выигрывает независимо от места в файле. */
+.card[data-reveal].is-revealed:hover { transform: translateY(-3px); }
+.cargo-card[data-reveal].is-revealed:hover, .cargo-card[data-reveal].is-revealed:focus-visible {
+  transform: perspective(900px) translateY(-4px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+/* Нажатие на плитку-ссылку: на телефоне это единственный отклик, который человек
+   вообще может получить от карточки. */
+.card:active, .cargo-card[data-reveal].is-revealed:active { transform: translateY(0) scale(.995); box-shadow: var(--shadow); }
