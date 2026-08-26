@@ -7,6 +7,14 @@ export const SITE_BRAND = 'МАНИП-МО'
 export const SITE_PHONE = '+7 (907) 031-17-37'
 export const SITE_TEL_HREF = `tel:${SITE_PHONE.replace(/[^\d+]/g, '')}`
 
+// Волна приёмки (27.08.2026). Раньше подвал (default.vue) и статическая 404
+// хранили домен как отдельный литерал [SITE_02_DOMAIN] — плейсхолдер завели
+// вместе с og:image (см. nuxt.config.ts), но именно эти два места пропустили
+// при подключении боевого домена, потому что tools/set_domain.py ищет только
+// зону .example, а не квадратные скобки. Теперь один источник, как и для
+// телефона выше.
+export const SITE_DOMAIN = 'manipmo.ru'
+
 // Форма заявки отправляет POST на Cloudflare Worker, который пересылает заявку
 // диспетчеру в Telegram. Воркер задеплоен, адрес ниже — рабочий, не плейсхолдер;
 // идентификатор площадки в payload — 'manipmo' (он же в белом списке SITE_NAMES

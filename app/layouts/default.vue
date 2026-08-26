@@ -130,7 +130,7 @@ useHead({
        Подвал общий для всех страниц, поэтому ссылки автоматически стоят на
        каждой — этого и требуют legal-privacy-policy-page и yc-contacts-page-linked. -->
   <footer class="footer wrap">
-    <span class="footer__copy">© 2026 {{ BRAND }} · [SITE_02_DOMAIN]</span>
+    <span class="footer__copy">© 2026 {{ BRAND }} · {{ SITE_DOMAIN }}</span>
     <nav class="footer__links" aria-label="Служебные страницы">
       <NuxtLink to="/kontakty/">Контакты и реквизиты</NuxtLink>
       <NuxtLink to="/politika-obrabotki-personalnyh-dannyh/">Политика обработки ПД</NuxtLink>
