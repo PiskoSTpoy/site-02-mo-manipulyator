@@ -92,6 +92,14 @@ useHead({
         <NuxtLink to="/faq/">Вопросы</NuxtLink>
         <a :href="TEL_HREF">{{ PHONE }}</a>
       </nav>
+      <!-- Волна приёмки (29.08.2026). На десктопе шапка заканчивалась просто
+           номером телефона — жирным, но всё равно текстовой ссылкой среди
+           остальных пунктов меню. Мобильная CTA-панель ниже даёт явную
+           сплошную кнопку «Заказать манипулятор», а посетитель с широким
+           экраном такого сигнала не видел вовсе. Кнопка ведёт на тот же
+           якорь #order и использует ту же заливку var(--accent), что и
+           mcta__btn--order — тот же смысл «нажми сюда», перенесённый в шапку. -->
+      <NuxtLink class="nav__order-btn" to="/#order" aria-current-value="false">Заказать манипулятор</NuxtLink>
 
       <!-- Мобильное меню: нативный <details> — раскрывается и с клавиатуры, и без JS.
            До этой волны на ширине ≤760px навигация просто пропадала (.nav__links: display none)
@@ -199,6 +207,13 @@ useHead({
 /* Ни имя бренда, ни номер телефона не переносятся: на 800px «МАНИП-/МО»
    и «+7 (907)/031-17-37» ломались на две строки и раздували шапку. */
 .brand__name, .nav__links a[href^="tel:"] { white-space: nowrap; }
+.nav__order-btn {
+  display: inline-flex; align-items: center; margin-left: 10px; flex: none;
+  padding: 10px 16px; border-radius: var(--r-pill); background: var(--accent); color: #fff;
+  font-weight: 700; font-size: var(--fs-sm); text-decoration: none; white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(47,122,79,.28); transition: background-color .15s ease;
+}
+.nav__order-btn:hover { background: var(--accent-ink); }
 /* Самая узкая десктопная полоса — 761px: на 760 и ниже включается бургер.
    Замер: при кегле .89rem и подложке 12px по бокам семь пунктов плюс знак
    требовали 840px при экране 761 — горизонтальный скролл на всех ширинах
@@ -211,6 +226,7 @@ useHead({
   .brand { gap: 8px; font-size: var(--fs-md); }
   .brand__mark { width: 34px; height: 34px; border-radius: 11px; }
   .brand__mark svg { width: 21px; height: 21px; }
+  .nav__order-btn { padding: 8px 12px; font-size: var(--fs-xs); margin-left: 6px; }
 }
 .footer { border-top: 1px solid var(--line); padding-block: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 24px; color: var(--muted); font-size: var(--fs-sm); margin-top: 40px; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
@@ -313,6 +329,7 @@ useHead({
 @media (max-width: 860px) {
   .nav__links { display: none; }
   .nav__mobile { display: block; }
+  .nav__order-btn { display: none; }
   .mcta {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
