@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Волна приёмки (31.08.2026). Яндекс.Вебмастер попросил SVG-фавиконку или
+       120×120 растровую — старый favicon.ico был 32×32, этого недостаточно.
+       Мотив не выдуман заново: тот же контур, что уже стоит в шапке как
+       .brand__mark (default.vue) — манипулятор поднимает груз. Там он рисуется
+       через stroke="currentColor" (наследует цвет текста), для отдельного файла
+       фавиконки это не работает — браузер не применит контекстный цвет, поэтому
+       здесь заливка захардкожена в var(--accent) сайта, #2F7A4F. -->
+  <rect width="24" height="24" rx="6" fill="#2F7A4F"/>
+  <path d="M4.6 16.6 L16 6.6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <path d="M16 6.6 V10.6" stroke="#fff" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+  <rect x="13.2" y="10.6" width="5.6" height="4.6" rx="1.1" fill="#fff"/>
+  <rect x="2.6" y="15.4" width="4.6" height="3.6" rx="1" fill="#fff"/>
+  <path d="M2.6 21 H20.6" stroke="#fff" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+</svg>
