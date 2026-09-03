@@ -2,6 +2,7 @@ node_modules/
 .output/
 .nuxt/
 dist/
+dist
 .env
 .env.*
 .claude/
