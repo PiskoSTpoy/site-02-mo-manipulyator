@@ -90,7 +90,7 @@ check('порядок по моменту', byMoment, ['Palfinger PK 23500A', 'K
 check('самая мощная НЕ самая длиннорукая (тезис сайта)', byMoment[0] !== byReach[0], true)
 
 console.log('--- целостность справочников ---')
-check('направлений 6', DIRECTIONS.length, 6)
+check('направлений 7', DIRECTIONS.length, 7)
 check('грузов 6', CARGO.length, 6)
 check('машин 4', FLEET.length, 4)
 check('плеч тарифной таблицы 11', TARIFF_BANDS_KM.length, 11)
@@ -101,6 +101,10 @@ check('шестое направление добавлено корректно
 check('Есипово (Солнечногорск 50 км), средний класс = 15 000', SHIFT_RATE['3–5 т']! + kmSurcharge(50), 15000)
 check('Химки 3 км, лёгкий класс = 7 830', SHIFT_RATE['до 3 т']! + kmSurcharge(3), 7830)
 check('Клин 66 км, тяжёлый класс = 20 760', SHIFT_RATE['5–10 т']! + kmSurcharge(66), 20760)
+check('седьмое направление добавлено корректно', directionBySlug('dmitrovskoe')!.road, 'А-104 «Москва — Дмитров — Дубна»')
+check('Дмитров 50 км, лёгкий класс = 13 000', SHIFT_RATE['до 3 т']! + kmSurcharge(50), 13000)
+check('Долгопрудный 6 км, лёгкий класс = 8 160', SHIFT_RATE['до 3 т']! + kmSurcharge(6), 8160)
+check('Дубна 98 км, тяжёлый класс = 24 280', SHIFT_RATE['5–10 т']! + kmSurcharge(98), 24280)
 check('у каждой машины есть ссылка-источник', FLEET.every((f) => f.src.href.startsWith('https://')), true)
 
 console.log('--- цена в таблице парка (Волна 33) ---')
