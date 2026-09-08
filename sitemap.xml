@@ -3,7 +3,7 @@
      lastmod = дата последнего изменения исходного .vue страницы, не дата сборки:
      повторная сборка без правок контента даёт этот же файл байт в байт. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://manipmo.ru/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/</loc><lastmod>2026-09-08T03:21:54+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-09-07T17:08:23+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/attestaciya-operatora-kmu/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/gruzovoy-moment-kak-schitat/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
@@ -36,10 +36,11 @@
   <url><loc>https://manipmo.ru/keysy/montazh-tyazhelym-klassom/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/keysy/razgruzka-na-logoparke/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/kontakty/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
-  <url><loc>https://manipmo.ru/napravleniya/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/napravleniya/</loc><lastmod>2026-09-08T03:21:51+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/napravleniya/dmitrovskoe/</loc><lastmod>2026-09-08T03:21:34+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/napravleniya/gorkovskoe/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/napravleniya/kashirskoe/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
-  <url><loc>https://manipmo.ru/napravleniya/leningradskoe/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/napravleniya/leningradskoe/</loc><lastmod>2026-09-08T03:22:25+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/napravleniya/novorizhskoe/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/napravleniya/simferopolskoe/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/napravleniya/yaroslavskoe/</loc><lastmod>2026-08-26T23:22:57+03:00</lastmod></url>
