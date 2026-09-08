@@ -91,16 +91,26 @@ export default defineNuxtConfig({
       // Яндекс.Метрика, счётчик 111985225. Заведён 26.08.2026 — до этого сайт
       // публиковался вслепую. Свой счётчик, не общий с другими сайтами сети —
       // общий счётчик был бы связью внутри системы самого Яндекса.
+      // 08.09.2026 — отложенная загрузка до window.load (фоллбэк 4с), тот же паттерн,
+      // что и на остальных сайтах сети (см. память kran-network-core-web-vitals):
+      // webvisor:true — тяжёлая опция, tag.js ощутимо грузит главный поток на throttled
+      // CPU, а к моменту load LCP/FCP уже случились. Флаг __ymBooted — от двойного
+      // срабатывания. ym() в этом сайте больше нигде не вызывается (grep по app/).
       script: [
         {
           type: 'text/javascript',
-          innerHTML: `(function(m,e,t,r,i,k,a){
+          innerHTML: `function __ymBoot(){
+if (window.__ymBooted) return;
+window.__ymBooted = true;
+(function(m,e,t,r,i,k,a){
 m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 m[i].l=1*new Date();
 for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
 })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111985225', 'ym');
-ym(111985225, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});`,
+ym(111985225, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+}
+if (document.readyState === 'complete') { __ymBoot(); } else { window.addEventListener('load', __ymBoot); setTimeout(__ymBoot, 4000); }`,
         },
       ],
       noscript: [
