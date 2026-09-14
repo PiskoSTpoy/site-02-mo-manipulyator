@@ -118,6 +118,9 @@ const sources = [
         подрядчику такие регламенты по телефону не выдают.
       </li>
     </ol>
+    <p style="margin-top:16px;max-width:78ch">Ответы на вопросы, которые чаще всего задают ещё до этих четырёх пунктов —
+      про пропуск МКАД, учёт КМУ в Ростехнадзоре и документы рейса, — собраны в разделе
+      <NuxtLink to="/faq/" style="color:var(--accent-ink)">частых вопросов</NuxtLink>.</p>
   </section>
 
   <section class="section wrap" style="padding-top:0">
