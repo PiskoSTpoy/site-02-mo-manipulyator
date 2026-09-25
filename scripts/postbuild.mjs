@@ -160,3 +160,81 @@ const redirectPairs = [];
   writeFileSync(join(OUT, '_redirects'), body, 'utf8');
   console.log(`_redirects: ${redirectPairs.length} правил 301`);
 }
+
+// ─── 5. seo-2026-playbook: id на H2 + серверный TOC для страниц блога ───────
+// AppBlogArticle.vue уже умеет собирать id и оглавление (toc-desktop/toc-mobile)
+// — но делает это в setup(), который висит на хуке 'app:suspense:resolve'
+// (клиентский lifecycle). При статическом prerender (nuxt generate) этот хук не
+// срабатывает: v-if="tocItems.length >= 3" видит пустой массив и не рендерит
+// <nav>/<details> вовсе. Для человека с JS всё работает как задумано; для
+// AI-краулера, который JS не выполняет, у H2 нет id и оглавления нет в разметке.
+// Здесь — тот же алгоритм (slugify, сбор id), что в AppBlogArticle.vue setup(),
+// перенесённый в постройку статики, БЕЗ переписывания текста статей.
+{
+  const TR = {
+    а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'yo', ж: 'zh', з: 'z',
+    и: 'i', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r',
+    с: 's', т: 't', у: 'u', ф: 'f', х: 'h', ц: 'c', ч: 'ch', ш: 'sh',
+    щ: 'sch', ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya',
+  };
+  const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+  const slugify = (text) => {
+    const lower = stripTags(text).toLowerCase();
+    let out = '';
+    for (const ch of lower) {
+      if (TR[ch] !== undefined) out += TR[ch];
+      else if (/[a-z0-9]/.test(ch)) out += ch;
+      else out += '-';
+    }
+    return out.replace(/-+/g, '-').replace(/^-|-$/g, '') || 'section';
+  };
+
+  let idPatched = 0;
+  for (const p of walk(OUT, (x) => x.endsWith('.html'))) {
+    let html = readFileSync(p, 'utf8');
+    const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/);
+    if (!mainMatch) continue;
+    let main = mainMatch[1];
+    const used = new Set();
+    const items = [];
+    let changed = false;
+
+    main = main.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (full, attrs, text) => {
+      let id;
+      const idm = attrs.match(/id="([^"]*)"/);
+      if (idm) {
+        id = idm[1];
+      } else {
+        const base = slugify(text);
+        id = base;
+        let i = 2;
+        while (used.has(id)) id = `${base}-${i++}`;
+        attrs = ` id="${id}"${attrs}`;
+        changed = true;
+      }
+      used.add(id);
+      items.push({ id, text: stripTags(text).trim() });
+      return `<h2${attrs}>${text}</h2>`;
+    });
+
+    if (changed) {
+      html = html.slice(0, mainMatch.index) + `<main${mainMatch[0].match(/<main([^>]*)>/)[1]}>` + main + '</main>' + html.slice(mainMatch.index + mainMatch[0].length);
+      idPatched++;
+    }
+
+    // ПОПЫТКА вставить готовый <nav class="toc-desktop"> статически на страницах
+    // блога — ОТКАЧЕНО 25.09.2026 после живой проверки: вставка узла, которого
+    // не было в исходном серверном рендере Vue, даёт в консоли браузера
+    // "Hydration completed but contains mismatches" — Vue при гидратации не
+    // ожидает этот элемент (клиентский tocItems стартует пустым и v-if сначала
+    // false). Риск непредсказуем на проде (тихий патч DOM клиентом, возможно
+    // мигание контента) — не стали рисковать живым сайтом ради строки в отчёте
+    // чекера. Правильное решение — не постройка снаружи, а правка самого
+    // AppBlogArticle.vue: считать tocItems синхронно при setup (не только в
+    // клиентском хуке 'app:suspense:resolve'), тогда SSR и клиент с самого
+    // начала совпадут. Это отдельная, более аккуратная задача — см. STATUS.md.
+
+    if (changed) writeFileSync(p, html, 'utf8');
+  }
+  console.log(`seo-2026-playbook: id на H2 — ${idPatched} файлов (TOC-вставка отключена, см. комментарий выше)`);
+}
