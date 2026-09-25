@@ -154,6 +154,21 @@ const ALL_POSTS: Array<{ href: string; title: string; excerpt: string }> = [
     title: 'Манипулятор или автокран — что заказать, если груз нужно и привезти, и поднять',
     excerpt: 'Манипулятор везёт и выгружает сам, автокран только поднимает. Сравнение по массе, вылету, высоте, площадке и числу машин в заказе.',
   },
+  {
+    href: '/blog/kakoy-manipulyator-zakazat-tonnazh/',
+    title: 'Манипулятор на 3, 5, 7 или 10 тонн — что означают тонны и какой класс заказать',
+    excerpt: '«Тонны» — это борт или стрела, и цифры часто не совпадают: у Soosan SCS334 стрела 3 200 кг, борт 2,5 т. Четыре класса парка по борту, вылету и цене.',
+  },
+  {
+    href: '/blog/koltsa-kolodtsa-manipulyator/',
+    title: 'Кольца для колодца и септика манипулятором — какая машина нужна',
+    excerpt: 'КС 10-9 — 0,6 т, КС 20-9 — 1,47 т (ГОСТ 8020-2016). Какая КМУ опустит кольцо на вылете 7,5–8 м и сколько колец увезти за рейс.',
+  },
+  {
+    href: '/blog/lyulka-na-manipulyatore-podem-lyudey/',
+    title: 'Можно ли поднимать людей манипулятором в люльке',
+    excerpt: 'Только в люльке для людей (п. 236 ФНП № 461), в 7 случаях из п. 235 и по ППР, согласованному с Ростехнадзором. Для работ на высоте — автовышка.',
+  },
 ]
 
 // Внутренняя перелинковка блога, а не просто «читать дальше» (10.09.2026).
@@ -418,7 +433,7 @@ onBeforeUnmount(() => {
     <section v-if="relatedPosts.length" class="related section wrap" aria-label="Другие статьи блога">
       <div class="section-head">
         <span class="eyebrow">Читать дальше</span>
-        <h2>Другие статьи блога</h2>
+        <h2 id="drugie-stati-bloga">Другие статьи блога</h2>
       </div>
       <div class="related__grid">
         <NuxtLink v-for="p in relatedPosts" :key="p.href" class="related__card card" :to="p.href">

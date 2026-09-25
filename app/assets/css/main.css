@@ -547,3 +547,12 @@ input:user-invalid:focus-visible, textarea:user-invalid:focus-visible { outline-
 /* Нажатие на плитку-ссылку: на телефоне это единственный отклик, который человек
    вообще может получить от карточки. */
 .card:active, .cargo-card[data-reveal].is-revealed:active { transform: translateY(0) scale(.995); box-shadow: var(--shadow); }
+
+/* seo-2026-playbook, 25.09.2026: строка мета статьи (автор + <time>) и статическое
+   оглавление. Оглавление пишется прямо в шаблоне страницы (SSR и гидратация видят
+   один и тот же DOM), а не вставляется postbuild-скриптом — см. STATUS.md. */
+.art-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 10px 0 0; color: var(--muted); font-size: var(--fs-sm); }
+.toc-static { margin: 22px 0 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); max-width: 760px; }
+.toc-static b { display: block; margin-bottom: 6px; font-size: var(--fs-sm); }
+.toc-static ol { margin: 0; padding-left: 20px; font-size: var(--fs-sm); line-height: 1.7; }
+.toc-static a { color: var(--accent-ink); }
