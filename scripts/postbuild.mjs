@@ -46,6 +46,19 @@ function walk(dir, filter) {
   const before = existsSync(dst) ? statSync(dst).size : 0;
   copyFileSync(src, dst);
   console.log(`404.html: оболочка ${before} Б заменена статической страницей ${statSync(dst).size} Б`);
+
+  // 200.html — такая же пустая SPA-оболочка (фолбэк для хостингов вроде Surge).
+  // На GitHub Pages она отдаётся как обычный адрес /200.html с кодом 200, без
+  // H1/canonical — тонкая страница в индексе. Аудит seo-2026-playbook 28.09.2026:
+  // оставляем файл, но закрываем от индекса.
+  const shell = join(OUT, '200.html');
+  if (existsSync(shell)) {
+    const html = readFileSync(shell, 'utf8');
+    if (!/<meta[^>]+name=["']robots["']/i.test(html)) {
+      writeFileSync(shell, html.replace(/<\/head>/i, '<meta name="robots" content="noindex, follow"></head>'), 'utf8');
+      console.log('200.html: добавлен noindex');
+    }
+  }
 }
 
 // ─── 2. noindex + canonical в заглушках-редиректах ──────────────────────────
