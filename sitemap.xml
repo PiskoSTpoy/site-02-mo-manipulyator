@@ -4,11 +4,12 @@
      повторная сборка без правок контента даёт этот же файл байт в байт. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://manipmo.ru/</loc><lastmod>2026-09-14T18:24:30+03:00</lastmod></url>
-  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-02T10:58:18+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-03T06:39:10+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/arenda-manipulyatora-s-ekipazhem/</loc><lastmod>2026-10-02T11:01:32+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/attestaciya-operatora-kmu/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/derevya-meshayut-manipulyatoru-vyrubka-mo/</loc><lastmod>2026-09-28T06:28:07+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/elektronnyy-talon-ossig-manipulyator-mo/</loc><lastmod>2026-10-01T11:48:04+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/fbs-bloki-manipulyator-skolko-za-reys/</loc><lastmod>2026-10-03T06:46:59+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/gruzovoy-moment-kak-schitat/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/it-80-ili-scs334-do-5-tonn/</loc><lastmod>2026-10-02T10:55:51+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/kakoy-manipulyator-zakazat-tonnazh/</loc><lastmod>2026-09-25T06:49:00+03:00</lastmod></url>
@@ -31,6 +32,7 @@
   <url><loc>https://manipmo.ru/blog/ohrannaya-zona-gazoprovoda-manipulyator/</loc><lastmod>2026-09-07T17:08:23+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ohrannaya-zona-lep-manipulyator/</loc><lastmod>2026-09-19T07:11:18+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ohrannaya-zona-svyazi-manipulyator/</loc><lastmod>2026-09-19T07:17:20+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/ohrannaya-zona-teplotrassy-manipulyator/</loc><lastmod>2026-10-03T06:51:45+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ohrannaya-zona-vodoema-manipulyator/</loc><lastmod>2026-09-07T17:08:23+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ostanovka-manipulyatora-u-dorogi/</loc><lastmod>2026-09-30T12:06:37+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ostanovka-na-tskad-m11-m12-zapret/</loc><lastmod>2026-10-02T11:02:30+03:00</lastmod></url>
@@ -50,6 +52,7 @@
   <url><loc>https://manipmo.ru/blog/transportnoe-polozhenie-strely-manipulyator/</loc><lastmod>2026-09-19T07:17:20+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/tsena-manipulyatora-podmoskovye/</loc><lastmod>2026-09-29T13:00:00+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/tskad-manipulyator/</loc><lastmod>2026-09-19T07:17:20+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/uchet-kmu-rostehnadzor-otmena/</loc><lastmod>2026-10-03T06:44:11+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ustroystvo-kmu/</loc><lastmod>2026-09-14T18:25:20+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/vesovoy-kontrol-manipulyator/</loc><lastmod>2026-09-27T19:18:20+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/vynosnye-opory-podkladki-manipulyator/</loc><lastmod>2026-09-27T19:17:56+03:00</lastmod></url>
