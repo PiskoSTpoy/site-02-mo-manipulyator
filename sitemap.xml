@@ -4,7 +4,7 @@
      повторная сборка без правок контента даёт этот же файл байт в байт. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://manipmo.ru/</loc><lastmod>2026-09-14T18:24:30+03:00</lastmod></url>
-  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-10T06:42:27+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-12T00:01:28+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/arenda-manipulyatora-s-ekipazhem/</loc><lastmod>2026-10-02T11:01:32+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/attestaciya-operatora-kmu/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/chek-list-ploshchadki-dlya-manipulyatora/</loc><lastmod>2026-10-04T06:19:35+03:00</lastmod></url>
@@ -35,6 +35,7 @@
   <url><loc>https://manipmo.ru/blog/massa-gruza-v-zayavke-manipulyator/</loc><lastmod>2026-10-05T11:38:53+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/odin-reys-ili-neskolko-manipulyator/</loc><lastmod>2026-09-30T12:06:37+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ogranichenie-vysoty-manipulyator/</loc><lastmod>2026-09-19T07:12:40+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/ogranichitel-lep-manipulyator-maket-proverka/</loc><lastmod>2026-10-12T00:02:12+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ogranichitel-ne-vesy-manipulyator/</loc><lastmod>2026-10-06T14:15:13+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ohrannaya-zona-gazoprovoda-manipulyator/</loc><lastmod>2026-09-07T17:08:23+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/ohrannaya-zona-lep-manipulyator/</loc><lastmod>2026-09-19T07:11:18+03:00</lastmod></url>
@@ -57,6 +58,8 @@
   <url><loc>https://manipmo.ru/blog/propusk-mkad-ttk-gruzovik/</loc><lastmod>2026-09-19T07:12:33+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/prostoy-manipulyatora-pri-razgruzke/</loc><lastmod>2026-09-30T12:04:41+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/prosushka-dorog-manipulyator/</loc><lastmod>2026-09-19T07:17:20+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/proverka-ogranichitelya-gruzopodemnosti-kmu/</loc><lastmod>2026-10-12T00:03:00+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/remont-ogranichitelya-kmu-kto-vprave/</loc><lastmod>2026-10-12T00:01:10+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/signalshchik-manipulyator-zona-ne-vidna/</loc><lastmod>2026-10-09T14:22:13+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/skolko-poddonov-v-manipulyator/</loc><lastmod>2026-09-24T12:12:52+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/snt-dopusk-manipulyator/</loc><lastmod>2026-09-23T23:55:45+03:00</lastmod></url>
