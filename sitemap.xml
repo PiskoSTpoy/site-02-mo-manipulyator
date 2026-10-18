@@ -4,10 +4,11 @@
      повторная сборка без правок контента даёт этот же файл байт в байт. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://manipmo.ru/</loc><lastmod>2026-09-14T18:24:30+03:00</lastmod></url>
-  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-16T06:19:31+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-18T19:17:36+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/arenda-manipulyatora-s-ekipazhem/</loc><lastmod>2026-10-02T11:01:32+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/attestaciya-operatora-kmu/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/avariya-na-ploshchadke-manipulyator-instrukciya-p252/</loc><lastmod>2026-10-14T06:12:04+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/bordyury-br-manipulyator-skolko-za-reys/</loc><lastmod>2026-10-18T19:18:24+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/chek-list-ploshchadki-dlya-manipulyatora/</loc><lastmod>2026-10-04T06:19:35+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/derevya-meshayut-manipulyatoru-vyrubka-mo/</loc><lastmod>2026-09-28T06:28:07+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/dokumenty-podryadchika-manipulyator-fnp/</loc><lastmod>2026-10-08T11:07:06+03:00</lastmod></url>
@@ -65,9 +66,11 @@
   <url><loc>https://manipmo.ru/blog/prostoy-manipulyatora-pri-razgruzke/</loc><lastmod>2026-09-30T12:04:41+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/prosushka-dorog-manipulyator/</loc><lastmod>2026-09-19T07:17:20+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/proverka-ogranichitelya-gruzopodemnosti-kmu/</loc><lastmod>2026-10-12T00:03:00+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/razvorot-gruza-rukami-manipulyator-p116/</loc><lastmod>2026-10-18T19:15:31+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/remont-ogranichitelya-kmu-kto-vprave/</loc><lastmod>2026-10-12T00:01:10+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/remont-stropa-traversy-manipulyator-fnp/</loc><lastmod>2026-10-15T13:28:35+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/signalshchik-manipulyator-zona-ne-vidna/</loc><lastmod>2026-10-09T14:22:13+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/sklad-shtabelya-zazor-1-m-manipulyator-p109/</loc><lastmod>2026-10-18T19:18:33+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/skolko-poddonov-v-manipulyator/</loc><lastmod>2026-09-24T12:12:52+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/snt-dopusk-manipulyator/</loc><lastmod>2026-09-23T23:55:45+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/spetsrazreshenie-negabarit-manipulyator/</loc><lastmod>2026-09-19T07:15:39+03:00</lastmod></url>
