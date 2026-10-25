@@ -4,7 +4,7 @@
      повторная сборка без правок контента даёт этот же файл байт в байт. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://manipmo.ru/</loc><lastmod>2026-09-14T18:24:30+03:00</lastmod></url>
-  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-23T06:15:38+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/</loc><lastmod>2026-10-25T16:11:31+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/arenda-manipulyatora-s-ekipazhem/</loc><lastmod>2026-10-02T11:01:32+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/attestaciya-operatora-kmu/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/avariya-na-ploshchadke-manipulyator-instrukciya-p252/</loc><lastmod>2026-10-14T06:12:04+03:00</lastmod></url>
@@ -24,6 +24,7 @@
   <url><loc>https://manipmo.ru/blog/kanat-manipulyator-zamena-fnp/</loc><lastmod>2026-10-08T11:06:17+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/kanglim-ili-palfinger-vylet-ili-moment/</loc><lastmod>2026-10-01T11:45:39+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/kirpich-na-poddone-manipulyator-bez-tary-p228/</loc><lastmod>2026-10-16T06:20:21+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/koeffitsient-zapasa-stropa-kanat-tsep-lenta-p217/</loc><lastmod>2026-10-25T16:13:01+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/koltsa-kolodtsa-manipulyator/</loc><lastmod>2026-09-25T06:49:00+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/komponovka-i-upravlenie-kmu/</loc><lastmod>2026-08-26T23:22:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/konteyner-20-futov-manipulyator/</loc><lastmod>2026-10-15T13:26:04+03:00</lastmod></url>
@@ -72,6 +73,7 @@
   <url><loc>https://manipmo.ru/blog/prostoy-manipulyatora-pri-razgruzke/</loc><lastmod>2026-09-30T12:04:41+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/prosushka-dorog-manipulyator/</loc><lastmod>2026-09-19T07:17:20+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/proverka-ogranichitelya-gruzopodemnosti-kmu/</loc><lastmod>2026-10-12T00:03:00+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/raschet-stropa-ugol-vetvey-manipulyator-p217/</loc><lastmod>2026-10-25T16:13:01+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/razgruzka-v-temnote-osveshchenie-manipulyator/</loc><lastmod>2026-10-22T11:19:59+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/razvorot-gruza-rukami-manipulyator-p116/</loc><lastmod>2026-10-18T19:15:31+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/remont-ogranichitelya-kmu-kto-vprave/</loc><lastmod>2026-10-12T00:01:10+03:00</lastmod></url>
@@ -98,6 +100,7 @@
   <url><loc>https://manipmo.ru/blog/vesovoy-kontrol-manipulyator/</loc><lastmod>2026-09-27T19:18:20+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/vynosnye-opory-podkladki-manipulyator/</loc><lastmod>2026-09-27T19:17:56+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/zagruzka-chuzhogo-gruzovika-manipulyatorom/</loc><lastmod>2026-10-06T14:15:13+03:00</lastmod></url>
+  <url><loc>https://manipmo.ru/blog/zameshchenie-otvetstvennogo-manipulyator-p149/</loc><lastmod>2026-10-25T16:13:07+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/zapret-ekspluatacii-manipulyatora-p251/</loc><lastmod>2026-10-09T14:19:36+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/zaprety-pri-podyeme-gruza-manipulyatorom/</loc><lastmod>2026-10-05T11:38:53+03:00</lastmod></url>
   <url><loc>https://manipmo.ru/blog/zhilaya-zona-razgruzka-manipulyator/</loc><lastmod>2026-09-14T18:17:07+03:00</lastmod></url>
